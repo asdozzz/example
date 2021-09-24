@@ -38,6 +38,7 @@ class CalculateService
         $adapter = $this->companyAdapterResolver->getAdapterByContract($contract);
         $calculateResult = $adapter->calculate($contract);
         $contract->setCalculateResult($calculateResult);
+
         $this->contractRepository->saveContract($contract);
         return $contract->getUuid();
     }

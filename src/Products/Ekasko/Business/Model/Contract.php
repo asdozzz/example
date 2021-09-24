@@ -71,7 +71,7 @@ final class Contract implements AggregateRoot
         if (!empty($errors)) {
             throw new \Exception('CalculateRequest is invalid');
         }
-        $structure = ContractStructure::createFromCalculateCommand($calculate);
+        $structure = ContractStructure::createFromCalculateCommand($calculate->getUuid(),$calculate);
         $this->recordThat(new ContractWasUpdatedByCalculateRequest($structure));
     }
 
